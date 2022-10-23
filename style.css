@@ -1,0 +1,113 @@
+body {
+    font-family: 'NanumSquareR', sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    background-color:ivory;
+    border: solid 2px;
+    border-color:blanchedalmond;
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(font/NanumSquareR.ttf) format('truetype');
+}
+
+.upper_menu {
+    text-align: center;
+    width: 100%;
+    padding: 30px;
+    background-color: whitesmoke;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    padding: 30px 0px;
+    padding-bottom: 5px;
+}
+
+.title {
+    font-size: 50px;
+    margin: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    margin: 0px auto;
+}
+
+.warn {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.top_image {
+    margin-bottom: 1.67em;
+    padding: 0;
+    text-align: center;
+}
+
+.middle {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.select {
+    margin: 20px auto;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.select_image {
+    padding: 0;
+    margin: 0px 50px;
+    cursor: pointer;
+    width: 300px;
+    display: block;
+}
+
+.select_image:visited {
+    padding: 5px;
+    columns: blue;
+}
+
+.select_text {
+    text-align: center;
+    font-size: 30px;
+}
+
+.left {
+    left: 400px;
+}
+
+.right {
+    position:calc(100% + 400px);
+}
+
+.category {
+    text-align: center;
+    font-size: large;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.bold {
+    font-weight: 700;
+}
