@@ -6,8 +6,6 @@ body {
     flex-direction: column;
     margin: 0px;
     background-color:ivory;
-    border: solid 2px;
-    border-color:blanchedalmond;
 }
 
 @font-face {
@@ -64,7 +62,7 @@ body {
 }
 
 .select {
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 0;
     text-align: center;
     display: flex;
@@ -75,10 +73,11 @@ body {
 
 .select_image {
     padding: 0;
-    margin: 0px 50px;
+    margin: 0px auto;
     cursor: pointer;
-    width: 300px;
+    width: 20%;
     display: block;
+    padding-bottom: 10px;
 }
 
 .select_image:visited {
@@ -88,7 +87,7 @@ body {
 
 .select_text {
     text-align: center;
-    font-size: 30px;
+    font-size: 1.5rem;
 }
 
 .left {
@@ -102,6 +101,10 @@ body {
 .category {
     text-align: center;
     font-size: large;
+}
+
+#bottom_line {
+    width: 100%;
 }
 
 .red {
