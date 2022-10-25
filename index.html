@@ -18,17 +18,26 @@
         <hr size = "0.5" width="70%" align = "center" style = "margin-bottom: 1.2em;">
     </div>
 
-    <form action = "upload.html" method = "POST" class = "middle">
-        <div class = "select">
-            <input type = "image" id = "animal" name = "animal" src="image/animals.jpg" class = "select_image">
-            <input type = "image" id = "animal" name = "animal" src="image/animals.jpg" class = "select_image">
-            <input type = "image" id = "animal" name = "animal" src="image/animals.jpg" class = "select_image">
-        </div>
-        <div class = "select_text">
-            <label for = "animal" class = "select_text left">동물상</label>
-        </div>
-    </form>
-    <div id = "bottom_line"><hr size = "0.5" width = "70%" align = "center" style="margin-top: 1.2em;"></div>
+    <div>
+        <form action = "upload.html" method = "POST">
+            <section class = "animal">
+                <input type = "image" id = "animal" name = "animal" src="image/animals.jpg" class = "select_image">
+                <br>
+                <label for = "animal">동물상</label>
+            </section>
+            <section class = "crime">
+                <input type = "image" id = "crime" name = "crime" src="image/crime.jpg" class = "select_image">
+                <br>
+                <label for = "crime">범죄자상</label>
+            </section>
+            <section class = "color">
+                <input type = "image" id = "color" name = "color" src="image/personalColor.jpg" class = "select_image">
+                <br>
+                <label for = "animal">퍼스널 컬러</label>
+            </section>
+        </form>
+    </div>
+    <hr size = "0.5" width = "70%" align = "center" style="margin-top: 1.2em;">
 </body>
 <footer>
     <div style = "text-align: center; font-size: 15px;">
