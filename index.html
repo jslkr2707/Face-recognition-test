@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="Chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href = "style.css" rel = "stylesheet">
     <title>얼굴상 테스트</title>
@@ -14,9 +14,9 @@
         <h3 class = "subtitle">
             <span class = "red">실제 사진</span>을 바탕으로 한 모델 학습으로 다양한 얼굴 분석을 할 수 있습니다.
         </h3>
-        <h5 class = "warn bold" style = "margin-bottom: 0.5em;">(사진은 저장되지 않습니다.)</h5>
-        <h3 style = "margin-bottom: 0.5em;">사진을 터치하시면 그 카테고리에 대해<br>분석을 시작합니다.</h3>
-        <hr size = "0.5" width="70%" align = "center" style = "margin-bottom: 1.2em;">
+        <h5 class = "warn bold" style = "margin-bottom: 0">(사진은 저장되지 않습니다.)</h5>
+        <h3>사진을 터치하시면 그 카테고리에 대해<br>분석을 시작합니다.</h3>
+        <hr size = "0.5" width="70%" align = "center" style = "margin-bottom: 1.2em; margin-top: 0px">
     </div>
 
     <div>
@@ -34,15 +34,22 @@
             <section class = "color">
                 <input type = "image" id = "color" name = "color" src="image/personalColor.jpg" class = "select_image">
                 <br>
-                <label for = "animal">퍼스널 컬러</label>
+                <label for = "animal" style = "margin: 0px auto;">퍼스널 컬러</label>
             </section>
         </form>
     </div>
-    <hr size = "0.5" width = "70%" align = "center" style="margin-top: 1.2em;">
+    <hr size = "0.5" width = "70%" align = "center" style = "margin: 1.2em 0px;">
+    <section class = "intro">
+        <a href = "intro.html">
+            <img src = "image/intro.jpg" alt = "제작한 방법" width = "40%">
+        </a>
+        <p style = "font-size: 1.4em; margin: 2%; margin-bottom: 0px">제작 로그</p>
+    </section>
+    <hr size = "0.5" width = "70%" align = "center" style="margin: 1.2em 0px;">
 </body>
 <footer>
     <div style = "text-align: center; font-size: 15px;">
-        <p style = "margin-bottom: 20px;">제작: 알고리즘 문제해결부
+        <p style = "margin: 0px;">제작: 알고리즘 문제해결부
             <br>제작 참고: <a href = "https://animalface.site/ko/index.html">조코딩님의 동물상 테스트</a>
         </p>
         <a href="https://dan-kook.sen.hs.kr/">
