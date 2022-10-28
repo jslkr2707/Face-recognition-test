@@ -30,14 +30,13 @@ body {
     justify-content: center;
     align-items: center;
     color: #000000;
-    padding: 5% 0px;
-    padding-bottom: 5px;
+    padding: 0px 5%;
 }
 
 .title {
-    font-size: 2.5em;
+    font-size: 3em;
     line-height: 1.67;
-    margin: 5%;
+    margin: 2%;
 }
 
 .subtitle {
