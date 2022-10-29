@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="Chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "style.css" rel = "stylesheet">
+    <link href = "home.css" rel = "stylesheet">
     <title>얼굴상 테스트</title>
 </head>
 <body>
@@ -21,17 +21,17 @@
 
     <div>
         <form action = "upload.html" method = "POST">
-            <section class = "animal">
+            <section class = "image_section">
                 <input type = "image" id = "animal" name = "animal" src="image/animals.jpg" class = "select_image">
                 <br>
                 <label for = "animal">동물상</label>
             </section>
-            <section class = "crime">
+            <section class = "image_section">
                 <input type = "image" id = "crime" name = "crime" src="image/crime.jpg" class = "select_image">
                 <br>
                 <label for = "crime">범죄자상</label>
             </section>
-            <section class = "color">
+            <section class = "image_section">
                 <input type = "image" id = "color" name = "color" src="image/personalColor.jpg" class = "select_image">
                 <br>
                 <label for = "animal" style = "margin: 0px auto;">퍼스널 컬러</label>
@@ -43,9 +43,9 @@
         <a href = "intro.html">
             <img src = "image/intro.jpg" alt = "제작한 방법" width = "40%">
         </a>
-        <p style = "font-size: 1.4em; margin: 2%; margin-bottom: 0px">제작 로그</p>
+        <p style = "font-size: 1.4em; margin: 0 5%;">제작 로그</p>
     </section>
-    <hr size = "0.5" width = "70%" align = "center" style="margin: 1.2em 0px;">
+    <hr size = "0.5" width = "70%" align = "center" style="margin: 1em 0px;">
 
     <div>Teachable Machine Image Model</div>
         <button type="button" onclick="init()">Start</button>
@@ -109,9 +109,7 @@
 </body>
 <footer>
     <div style = "text-align: center; font-size: 15px;">
-        <p style = "margin: 0px;">제작: 알고리즘 문제해결부
-            <br>제작 참고: <a target="_blank" href = "https://animalface.site/ko/index.html">조코딩님의 동물상 테스트</a>
-        </p>
+        <p style = "margin: 0px;">제작: 알고리즘 문제해결부</p>
         <a href="https://dan-kook.sen.hs.kr/">
             <img src = "image/dklogo.jpg" alt = "단국대학교사범대학부속고등학교" width = "25%"/>
         </a>

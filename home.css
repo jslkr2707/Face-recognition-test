@@ -2,10 +2,27 @@ body {
     font-family: 'NanumSquareR', sans-serif;
     align-items: center;
     justify-content: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0px;
     background-color:beige;
+
+    animation-name: background_color;
+    animation-duration: 5s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes background_color {
+    from {
+        background-color: beige;
+    }
+    
+    to {
+        background-color: burlywood;
+    }
 }
 
 @font-face {
@@ -25,7 +42,6 @@ body {
 .main {
     display: flex;
     text-align: center;
-    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -86,6 +102,12 @@ form {
     font-size: 1.5rem;
 }
 
+.image_section {
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+}
+
 section label {
     display: inline-block;
     text-align: center;
@@ -95,7 +117,8 @@ section label {
 
 .intro {
     text-align: center;
-    width: 100%;
+    padding: 0 5%;
+    display: block;
 }
 
 .category {
