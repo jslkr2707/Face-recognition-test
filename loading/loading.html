@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv = "refresh" content = "5; url = result.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href = './loading.css', rel = 'stylesheet'>
     <title>분석 중...</title>
 </head>
-<body>
+<body onload="analyze()">
     <div class = "main">
         <h1 style = "font-size: 2em;">얼굴상을 분석 중입니다.</h1>
         <h3>잠시만 기다려주세요...</h3>
-        <div class = "loading"></div>
+        <div class = "loading" style = "display: flex; align-items: center;"></div>
     </div>
 </body>
+<script>
+    function analyze() {
+        setTimeout(function() {
+            window.location.href = "../analyze/analyze.html" + window.location.search;
+        }, 7000);
+    }
+</script>
 </html>

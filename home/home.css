@@ -83,7 +83,7 @@ body {
 form {
     text-align: center;
     margin: 0 auto;
-    padding: 0 5%;
+    padding: 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -91,11 +91,14 @@ form {
     justify-content: center;
 }
 
-.select_image {
+.image_btn {
     padding: 0;
     margin: 0;
     cursor: pointer;
     width: 40%;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
 }
 
 .select_text {
@@ -104,12 +107,13 @@ form {
 }
 
 .image_section {
-    width: 100%;
     padding: 0 5%;
     text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
-section label {
+form label {
     display: inline-block;
     text-align: center;
     margin: 2%;

@@ -27,31 +27,32 @@
       <div class="file-upload-content">
         <img class="file-upload-image" src="#" alt="your image" />
         <div class="image-title-wrap">
-          <button type="button" class="analysis">분석하기
+          <button type="button" class="analysis" onclick = "redirect('../loading/loading.html')">분석하기
           
         </div>
       </div>
     </div>
     <script>
+      function redirect(href){
+        window.location.href = href + window.location.search;
+      }
+
       function readURL(input) {
-  if (input.files && input.files[0]) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
 
-    var reader = new FileReader();
+          reader.onload = function(e) {
+            $('.image-upload-wrap').hide();
 
-    reader.onload = function(e) {
-      $('.image-upload-wrap').hide();
+            $('.file-upload-image').attr('src', e.target.result);
+            $('.file-upload-content').show();
 
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
+            $('.image-title').html(input.files[0].name);
+          };
 
-      $('.image-title').html(input.files[0].name);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-
-  } 
-};
-
+          reader.readAsDataURL(input.files[0]);
+        } 
+      };
     </script>
 </body>
 </html>

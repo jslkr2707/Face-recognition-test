@@ -60,14 +60,15 @@ h3 {
     transform: translateX(-50%);
     width: 60px;
     height: 60px;
+    outline: 0;
     border: 6px solid whitesmoke;
     border-top: 6px solid #ff003f;
     border-right: 6px solid #ff003f;
     border-radius: 100%;
 
     animation-name: spin;
-    animation-duration: 1.2s;
-    animation-delay: 0.5s;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
