@@ -1,0 +1,83 @@
+body {
+    font-family: 'NanumSquareR', sans-serif;
+    background-color: whitesmoke;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+}
+
+h1 {
+    line-height: 1.2em;
+}
+
+h3 {
+    margin: 0;
+    margin-bottom: 1.2em;
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(font/NanumSquareR.ttf) format('truetype');
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    align-content: center;
+}
+
+.main h1, h3 {
+    animation-name: opac;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes opac {
+    from {
+        opacity: 100%;
+        color: black;
+    }
+
+    to {
+        opacity: 0%;
+        color: aliceblue;
+    }
+}
+
+.loading {
+    position: relative;
+    margin-top: 5%;
+    left: calc(50% - 30px - 3px);
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border: 6px solid whitesmoke;
+    border-top: 6px solid #ff003f;
+    border-right: 6px solid #ff003f;
+    border-radius: 100%;
+
+    animation-name: spin;
+    animation-duration: 1.2s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
