@@ -1,0 +1,140 @@
+body {
+    font-family: 'NanumSquareR', sans-serif;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    background-color:beige;
+
+    animation-name: background_color;
+    animation-duration: 5s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes background_color {
+    from {
+        background-color: beige;
+    }
+    
+    to {
+        background-color: burlywood;
+    }
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(font/NanumSquareR.ttf) format('truetype');
+}
+
+.upper_menu {
+    text-align: center;
+    width: 100%;
+    padding: 30px;
+    background-color: whitesmoke;
+}
+
+.main {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    padding: 0px 5%;
+}
+
+.title {
+    font-size: 3em;
+    line-height: 1.67;
+    margin: 2%;
+}
+
+.subtitle {
+    margin: 5%;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+.warn {
+    margin: 10px 0;
+    margin-top: 0px;
+}
+
+.top_image {
+    padding: 0;
+    text-align: center;
+}
+
+.middle {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.select_image {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 40%;
+}
+
+.select_text {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.image_section {
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+}
+
+section label {
+    display: inline-block;
+    text-align: center;
+    margin: 2%;
+    font-size: 1.4em;
+}
+
+.intro {
+    text-align: center;
+    padding: 0 5%;
+    display: block;
+}
+
+.category {
+    text-align: center;
+    font-size: large;
+}
+
+#bottom_line {
+    width: 100%;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.bold {
+    font-weight: 700;
+}
