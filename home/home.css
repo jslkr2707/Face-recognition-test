@@ -30,7 +30,7 @@ body {
     font-family: 'NanumSquareR';
     font-style: normal;
     font-weight: 400;
-    src: url(font/NanumSquareR.ttf) format('truetype');
+    src: url(../font/NanumSquareR.ttf) format('truetype');
 }
 
 .upper_menu {

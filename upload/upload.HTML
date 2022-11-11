@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face_Recognition</title>
+    <link rel="stylesheet" href="./upload.css">
+</head>
+<body>
+    <h1>동물상 테스트</h1>
+    <hr>
+    <section>
+        <span class="title"> 메인></span>사진 업로드<span class="title">>결과 확인</span> 
+    </section>
+    
+    <p>사진을 선택하세요</p>
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="file-upload">
+      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">
+        파일 업로드<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/80625/icon-upload-file2.svg" width="8%" class="bluefile"></button>
+    
+      <div class="image-upload-wrap" style="display:none">
+        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" style="display:none" />
+      </div>
+      <div class="file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" />
+        <div class="image-title-wrap">
+          <button type="button" class="analysis">분석하기
+          
+        </div>
+      </div>
+    </div>
+    <script>
+      function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } 
+};
+
+    </script>
+</body>
+</html>

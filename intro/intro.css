@@ -1,5 +1,13 @@
 body {
+    font-family: 'NanumSquareR', sans-serif;
     background-color:  beige;
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/NanumSquareR.ttf) format('truetype');
 }
 
 
