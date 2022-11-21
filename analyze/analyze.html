@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>분석 완료!</title>
+    <link rel="stylesheet" href="./analyze.css">
 </head>
 <body>
-    <img src = "#" class = "img">
+    <div class = 'result-area'>
+        <img src = "#" id = "img">
+        <div id = 'label-container'></div>
+    </div>
+    <div class = 'retry'>
+        <button type = 'button' onclick = 'erase()'>다른 사진으로 재시도</button>
+    </div>
 
+    <script src="http://code.jquery.com/jquery-latest.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
-        let model, labelContainer, maxPredictions;
-        let modelReady = false;
-        
-        const category = location.href.search;
+        result();
+
+        let model, maxPredictions, labelContainer, num;
+        let image = document.getElementById('img');
+
+        const category = new URL(location).searchParams.get("category")
         const url = (
             category == 'animal' ? "https://teachablemachine.withgoogle.com/models/qOW4vPZ7e/" :
             category == 'color' ? "https://teachablemachine.withgoogle.com/models/zLN8cgr5l/" :
@@ -23,27 +33,33 @@
             : "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         );
 
+        image.onload = async function(){
+            await init();
+            await predict();
+        }
+
         async function init() {
             const modelURL = url + "model.json";
             const metadataURL = url + "metadata.json";
 
             model = await tmImage.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
+            num = Math.min(5, maxPredictions);
 
-            labelContainer = document.getElementById("label-container");
-            for (let i = 0; i < maxPredictions + 1; i++) { 
+            labelContainer = document.getElementById('label-container');
+            console.log(labelContainer);
+            for (let i = 0; i < num + 1; i++) { 
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
 
         async function predict() {
             const prediction = await model.predict(image);
-            for (let i = 0; i < maxPredictions; i++) {
+            for (let i = 0; i < num - 1; i++) {
                 const classPrediction =
-                    prediction[i].className + ": " + Mathf.round(prediction[i].probability * 100) + "%";
+                    prediction[i].className + ": " + Math.round(prediction[i].probability * 100) + "%";
                 labelContainer.childNodes[i+1].innerHTML = classPrediction;
             }
-            modelReady = true;
 
             prediction.sort((x, y) => parseFloat(y.probability) - parseFloat(x.probability));
             var result, explain;
@@ -51,69 +67,84 @@
             switch (prediction[0].className){
                 case "cat":
                     result = "<h3>고양이상</h3>";
+                    $('.result-message').addClass('cat-title');
                     break;
 
                 case "dog":
                     result = "<h3>강아지상</h3>";
+                    $('.result-message').addClass('dog-title');
                     break;
 
                 case "fox":
                     result = "<h3>여우상</h3>";
+                    $('.result-message').addClass('fox-title');
                     break;
 
                 case "frog":
                     result = "<h3>개구리상</h3>";
+                    $('.result-message').addClass('frog-title');
                     break;
 
                 case "giraffe":
                     result = "<h3>기린상</h3>";
+                    $('.result-message').addClass('giraffe-title');
                     break;
 
                 case "monkey":
                     result = "<h3>원숭이상</h3>";
+                    $('.result-message').addClass('monkey-title');
                     break;
 
                 case "mouse":
                     result = "<h3>쥐상</h3>";
+                    $('.result-message').addClass('mouse-title');
                     break;
 
                 case "pig":
                     result = "<h3>돼지상</h3>";
+                    $('.result-message').addClass('pig-title');
                     break;
 
                 case "snake":
                     result = "<h3>뱀상</h3>";
+                    $('.result-message').addClass('snake-title');
                     break;
 
                 case "good":
                     result = "<h3>모범시민상</h3>";
+                    $('.result-message').addClass('good-title');
                     break;
 
                 case "fraud":
                     result = "<h3>사기꾼상</h3>";
+                    $('.result-message').addClass('fraud-title');
                     break;
 
                 case "drug":
                     result = "<h3>약물 중독상</h3>";
+                    $('.result-message').addClass('drug-title');
                     break;
 
                 case "theft":
                     result = "<h3>절도상</h3>";
+                    $('.result-message').addClass('theft-title');
                     break;
 
                 case "cool":
                     result = "<h3>쿨 톤</h3>";
+                    $('.result-message').addClass('cool-title');
                     break;
 
                 case "warm":
                     result = "<h3>웜 톤</h3>";
+                    $('.result-message').addClass('warm-title');
                     break;
             }
 
-            $('.result-message').html('"' + resultmessage + '"');
-			$('.result-Explain').html(resultExplain);
+            $('.result-message').html('"' + result + '"');
+			$('.result-explain').html(explain);
 
-			for (let i = 0; i < maxPredictions; i++) {
+			for (let i = 0; i < num; i++) {
 				var barWidth;
 				var labeltitle;
 
@@ -121,79 +152,79 @@
 				console.log(barWidth);
 				switch (prediction[i].className) {
 					case "cat":
-                    labeltitle = "<h3>고양이상</h3>";
-                    break;
+                        labeltitle = "<h3>고양이상</h3>";
+                        break;
 
-                case "dog":
-                    labeltitle = "<h3>강아지상</h3>";
-                    break;
+                    case "dog":
+                        labeltitle = "<h3>강아지상</h3>";
+                        break;
 
-                case "fox":
-                    labeltitle = "<h3>여우상</h3>";
-                    break;
+                    case "fox":
+                        labeltitle = "<h3>여우상</h3>";
+                        break;
 
-                case "frog":
-                    labeltitle = "<h3>개구리상</h3>";
-                    break;
+                    case "frog":
+                        labeltitle = "<h3>개구리상</h3>";
+                        break;
 
-                case "giraffe":
-                    labeltitle = "<h3>기린상</h3>";
-                    break;
+                    case "giraffe":
+                        labeltitle = "<h3>기린상</h3>";
+                        break;
 
-                case "monkey":
-                    labeltitle = "<h3>원숭이상</h3>";
-                    break;
+                    case "monkey":
+                        labeltitle = "<h3>원숭이상</h3>";
+                        break;
 
-                case "mouse":
-                    labeltitle = "<h3>쥐상</h3>";
-                    break;
+                    case "mouse":
+                        labeltitle = "<h3>쥐상</h3>";
+                        break;
 
-                case "pig":
-                    labeltitle = "<h3>돼지상</h3>";
-                    break;
+                    case "pig":
+                        labeltitle = "<h3>돼지상</h3>";
+                        break;
 
-                case "snake":
-                    labeltitle = "<h3>뱀상</h3>";
-                    break;
+                    case "snake":
+                        labeltitle = "<h3>뱀상</h3>";
+                        break;
 
-                case "good":
-                    labeltitle = "<h3>모범시민상</h3>";
-                    break;
+                    case "good":
+                        labeltitle = "<h3>모범시민상</h3>";
+                        break;
 
-                case "fraud":
-                    labeltitle = "<h3>사기꾼상</h3>";
-                    break;
+                    case "fraud":
+                        labeltitle = "<h3>사기꾼상</h3>";
+                        break;
 
-                case "drug":
-                    labeltitle = "<h3>약물 중독상</h3>";
-                    break;
+                    case "drug":
+                        labeltitle = "<h3>약물 중독상</h3>";
+                        break;
 
-                case "theft":
-                    labeltitle = "<h3>절도상</h3>";
-                    break;
+                    case "theft":
+                        labeltitle = "<h3>절도상</h3>";
+                        break;
 
-                case "cool":
-                    labeltitle = "<h3>쿨 톤</h3>";
-                    break;
+                    case "cool":
+                        labeltitle = "<h3>쿨 톤</h3>";
+                        break;
 
-                case "warm":
-                    labeltitle = "<h3>웜 톤</h3>";
-                    break;
+                    case "warm":
+                        labeltitle = "<h3>웜 톤</h3>";
+                        break;
 				}
 
 				var label =
-					"<div class='animal-label d-flex align-items-center'>" +
+					"<div class='label-title'>" +
 					labeltitle +
 					'</div>';
 
 				var bar =
-					"<div class='bar-container position-relative container'><div class='" +
-					prediction[i].className +
-					"-box'></div><div class='d-flex justify-content-center align-items-center " +
-					prediction[i].className +
+					"<div class='bar-container'><div class='" +
+					category +
+					"-box'></div><div class='bar-content " +
+					category +
 					"-bar' style='width: " +
 					barWidth +
-					"'><span class='d-block percent-text'>" +
+					"'><span class='percent'>" +
 					Math.round(prediction[i].probability.toFixed(2) * 100) +
 					'%</span></div></div>';
 
@@ -201,20 +232,15 @@
 				}
         }
 
-        result();
-
         function result() {
             var b=localStorage.getItem("b")
-            var c=document.querySelector(".img")
+            var c=document.querySelector("#img")
             c.setAttribute("src", b)
         }
 
         function erase(){
-            localStorage.removeItem("b");
-        }
-
-        function ready(){
-            return modelReady;
+            localStorage.clear();
+            window.location.href = '../home/home.html';
         }
     </script>
 </body>

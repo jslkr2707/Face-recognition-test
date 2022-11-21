@@ -1,0 +1,124 @@
+html {
+    font-family: 'NanumSquareR', sans-serif;
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/NanumSquareR.ttf) format('truetype');
+}
+
+body {
+    font-family: 'NanumSquareR', sans-serif;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding: 5% 5%;
+}
+
+#img {
+    max-width: 60%;
+    max-height: 60%;
+}
+
+button {
+    margin: 2% auto;
+    outline: 0;
+    color: white;
+    background-color: #0d6efd;
+    font-family: 'NanumSquareR', sans-serif;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: larger;
+}
+
+h3 {
+    margin: 3% auto;
+}
+
+#label-container {
+    align-items: center;
+    text-align: center;
+    padding: 5% 0;
+    margin: 0;
+}
+
+.result-area {
+    margin: 0 5%;
+    padding: 0 5%;
+
+}
+
+.bar-container {
+    align-items: center;
+    text-align: center;
+    position: relative;
+
+}
+
+.bar-content {
+    align-items: center;
+    justify-content: center;
+    display: flex!important;
+    position: relative!important
+}
+
+.animal-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: chartreuse;
+}
+
+.animal-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(127, 255, 0, 0.2)
+}
+
+.crime-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: cadetblue;
+}
+
+.crime-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(95, 158, 160, 0.2)
+}
+
+.color-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:coral;
+}
+
+.color-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(127, 255, 0, 0.2)
+}
+
+.percent {
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+}
