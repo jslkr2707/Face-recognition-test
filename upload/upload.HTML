@@ -34,6 +34,7 @@
     </div>
     <script>
       function redirect(href){
+        upload();
         window.location.href = href + window.location.search;
       }
 
@@ -51,8 +52,15 @@
           };
 
           reader.readAsDataURL(input.files[0]);
-        } 
+        }
+
       };
+
+      function upload() {
+        var a=document.querySelector(".file-upload-image").getAttribute("src")
+        localStorage.setItem("b", a)
+        console.log(a)
+      }
     </script>
 </body>
 </html>

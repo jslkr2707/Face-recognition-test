@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src = "#" class = "img">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        let model, labelContainer, maxPredictions;
+        let modelReady = false;
+        
+        const category = location.href.search;
+        const url = (
+            category == 'animal' ? "https://teachablemachine.withgoogle.com/models/qOW4vPZ7e/" :
+            category == 'color' ? "https://teachablemachine.withgoogle.com/models/zLN8cgr5l/" :
+            category == 'crime' ? "https://teachablemachine.withgoogle.com/models/58xLjS4dF/" 
+            : "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        );
+
+        async function init() {
+            const modelURL = url + "model.json";
+            const metadataURL = url + "metadata.json";
+
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions + 1; i++) { 
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function predict() {
+            const prediction = await model.predict(image);
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + Mathf.round(prediction[i].probability * 100) + "%";
+                labelContainer.childNodes[i+1].innerHTML = classPrediction;
+            }
+            modelReady = true;
+
+            prediction.sort((x, y) => parseFloat(y.probability) - parseFloat(x.probability));
+            var result, explain;
+
+            switch (prediction[0].className){
+                case "cat":
+                    result = "<h3>고양이상</h3>";
+                    break;
+
+                case "dog":
+                    result = "<h3>강아지상</h3>";
+                    break;
+
+                case "fox":
+                    result = "<h3>여우상</h3>";
+                    break;
+
+                case "frog":
+                    result = "<h3>개구리상</h3>";
+                    break;
+
+                case "giraffe":
+                    result = "<h3>기린상</h3>";
+                    break;
+
+                case "monkey":
+                    result = "<h3>원숭이상</h3>";
+                    break;
+
+                case "mouse":
+                    result = "<h3>쥐상</h3>";
+                    break;
+
+                case "pig":
+                    result = "<h3>돼지상</h3>";
+                    break;
+
+                case "snake":
+                    result = "<h3>뱀상</h3>";
+                    break;
+
+                case "good":
+                    result = "<h3>모범시민상</h3>";
+                    break;
+
+                case "fraud":
+                    result = "<h3>사기꾼상</h3>";
+                    break;
+
+                case "drug":
+                    result = "<h3>약물 중독상</h3>";
+                    break;
+
+                case "theft":
+                    result = "<h3>절도상</h3>";
+                    break;
+
+                case "cool":
+                    result = "<h3>쿨 톤</h3>";
+                    break;
+
+                case "warm":
+                    result = "<h3>웜 톤</h3>";
+                    break;
+            }
+
+            $('.result-message').html('"' + resultmessage + '"');
+			$('.result-Explain').html(resultExplain);
+
+			for (let i = 0; i < maxPredictions; i++) {
+				var barWidth;
+				var labeltitle;
+
+				barWidth = prediction[i].probability.toFixed(2) * 100 + '%';
+				console.log(barWidth);
+				switch (prediction[i].className) {
+					case "cat":
+                    labeltitle = "<h3>고양이상</h3>";
+                    break;
+
+                case "dog":
+                    labeltitle = "<h3>강아지상</h3>";
+                    break;
+
+                case "fox":
+                    labeltitle = "<h3>여우상</h3>";
+                    break;
+
+                case "frog":
+                    labeltitle = "<h3>개구리상</h3>";
+                    break;
+
+                case "giraffe":
+                    labeltitle = "<h3>기린상</h3>";
+                    break;
+
+                case "monkey":
+                    labeltitle = "<h3>원숭이상</h3>";
+                    break;
+
+                case "mouse":
+                    labeltitle = "<h3>쥐상</h3>";
+                    break;
+
+                case "pig":
+                    labeltitle = "<h3>돼지상</h3>";
+                    break;
+
+                case "snake":
+                    labeltitle = "<h3>뱀상</h3>";
+                    break;
+
+                case "good":
+                    labeltitle = "<h3>모범시민상</h3>";
+                    break;
+
+                case "fraud":
+                    labeltitle = "<h3>사기꾼상</h3>";
+                    break;
+
+                case "drug":
+                    labeltitle = "<h3>약물 중독상</h3>";
+                    break;
+
+                case "theft":
+                    labeltitle = "<h3>절도상</h3>";
+                    break;
+
+                case "cool":
+                    labeltitle = "<h3>쿨 톤</h3>";
+                    break;
+
+                case "warm":
+                    labeltitle = "<h3>웜 톤</h3>";
+                    break;
+				}
+
+				var label =
+					"<div class='animal-label d-flex align-items-center'>" +
+					labeltitle +
+					'</div>';
+
+				var bar =
+					"<div class='bar-container position-relative container'><div class='" +
+					prediction[i].className +
+					"-box'></div><div class='d-flex justify-content-center align-items-center " +
+					prediction[i].className +
+					"-bar' style='width: " +
+					barWidth +
+					"'><span class='d-block percent-text'>" +
+					Math.round(prediction[i].probability.toFixed(2) * 100) +
+					'%</span></div></div>';
+
+					labelContainer.childNodes[i].innerHTML = label + bar;
+				}
+        }
+
+        result();
+
+        function result() {
+            var b=localStorage.getItem("b")
+            var c=document.querySelector(".img")
+            c.setAttribute("src", b)
+        }
+
+        function erase(){
+            localStorage.removeItem("b");
+        }
+
+        function ready(){
+            return modelReady;
+        }
+    </script>
+</body>
+</html>
