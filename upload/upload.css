@@ -143,6 +143,12 @@ div{
   border: 0;
   transition: all .2s ease;
 }
+
+.warning {
+  color: red;
+  font-size: 1rem;
+  font-weight: bold;
+}
     
 img.bluefile{
     position:relative;

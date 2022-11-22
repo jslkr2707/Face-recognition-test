@@ -4,47 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intro</title>
+    <title>사이트 소개</title>
+    <link rel ="stylesheet" href="./intro.css"/>
 </head>
 <body>
     <h1>
-        얼굴상 테스트
-        <img src="image/ai.jpg" height="100" alt="ai사진" title="ai">
+        사이트 소개
     </h1>
-    <link rel ="stylesheet" href="./intro.css"  /> 
+    <div style = "text-align: center;"><img src="../image/ai.jpg" alt="ai사진" title="ai" id = "img"></div>
 
     <div id="main">
         <hr size="0.5" width="70%" align="center" style="margin-bottom: 1.2em; margin-top: 0px">
-
-    <h3>
-        2022 단웅제 알고리즘 문제 해결부에서 제작한 행사용 사이트입니다.
-        요즘 유행하는 노벨ai나 범죄자 테스트등 인공지능과 관련된 코딩들이 각광을 받고 있어,
-        그것들을 보면서 이번 단웅제때 제작할 사이트를 구상했습니다.
-        제작한 사이트는 범죄자상 테스트처럼 사전에 추린 사진들로 ai에게 분류하는 법을 학습시키고,
-        사이트를 뼈대를 만든 이후, 
-        입력받은 사진을 ai가 분류기준을 판단해서 확률성으로 닮음성을 판단하도록 제작되었습니다.(변형예정)
+        <h3>
+            2022 단웅제 알고리즘 문제 해결부에서 제작한 행사용 사이트입니다.<br>
+            요즘 유행하는 노벨AI나 범죄자 테스트 등<br>인공지능과 관련된 코딩들이 각광을 받고 있어,<br>
+            이번 단웅제때 제작할 사이트를 구상했습니다.<br>
+            제작한 사이트는 범죄자상 테스트처럼 사전에 추린 사진들로<br>AI에게 분류하는 법을 학습시키고 사이트를 뼈대를 만든 이후, <br>
+            입력받은 사진을 AI가 분류기준을 판단해서<br>확률성으로 닮음성을 판단하도록 제작되었습니다.
         </h3>
-        <button onclick="goBack()">메인화면으로 돌아가기</button>
+        <hr size="0.5" width="70%" align="center" style="margin: 1.2em auto; margin-bottom: 0;">
+    </div>
+    <div class = 'dev'>
+        <h1>제작 방법</h1>
+        <section id = 'python'>
+            <img src = '../image/crawling.jpg' width = "50%" style = "vertical-align: text-middle;">
+            <p>프로그래밍 언어 파이썬으로 학습을 할<br>이미지를 크롤링<br>(이미지 검색, 다운로드 자동화)</p>
+        </section>
+        <section id = 'ai'>
+            <img src = '../image/teachable.jpg' width = "50%" style = "vertical-align: text-middle;">
+            <p>구글의 무료 이미지 분석 서비스<br>Teachable Machine으로 학습</p>
+        </section>
+        <section id = 'website'>
+            <img src = '../image/html.jpg' width = "50%" style = "vertical-align: text-middle;">
+            <p>HTML 및 CSS 강의를 배우고 웹사이트 제작</p>
+        </section>
+        <hr size="0.5" width="70%" align="center" style="margin: 1.2em auto;">
+    </div>
+    <div class = 'credit'>
+        <h1>Credit</h1>
+        <h2>제작: 알고리즘 문제해결부</h2>
+        <h3>
+            동아리 외부강사 선생님: 서경민<br>
+            아이디어: 서경민, 이준서<br>
+            프로젝트 주도: 이준서<br>
+            이미지 크롤링 및 학습: 이준서<br>
+            이미지 선별: 강동원, 김규민, 서민재, 이준서<br>
+            웹페이지 제작: 강동원, 김규민, 서민재, 이준서
+        </h3>
+        <hr size="0.5" width="70%" align="center" style="margin: 1.2em auto;">
+    </div>
+    <div class = 'link'>
+        <a href = 'https://github.com/AshesKaiser-KR/Face-Recognition-test' target = '_blank'>소스코드</a>
+    </div>
+    <button onclick="goBack()">메인화면으로 돌아가기</button>
 <script>
 function goBack() {
-    window.history.back();
+    window.location.href = '../home/home.html'
 }
 </script>
-
-        
-<div id="main">
-    <hr size="0.5" width="70%" align="center" style="margin-bottom: 1.2em; margin-top: 0px">
-
-    </div>
 <footer>
-    <p>
-    "제작: 알고리즘 문제해결부 "
-    <br>
-    "제작참고: "
+    <p style = 'margin-top: 0;'>
+    제작참고:
     <a href="https://animalface.site/ko/index.html">조코딩님의 동물상 테스트</a>
     </p>
     <a href="https://dan-kook.sen.hs.kr/">
-        <img src="../image/dk.png" alt="단국대학교사범대학부속고등학교" width="50px">
+        <img src="../image/dk.png" alt="단국대학교사범대학부속고등학교" width="10%">
     </a>
 </footer>
 

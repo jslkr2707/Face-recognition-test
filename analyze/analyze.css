@@ -21,18 +21,34 @@ body {
 #img {
     max-width: 60%;
     max-height: 60%;
+    padding: 20px;
+    margin: auto;
 }
 
 button {
     margin: 2% auto;
     outline: 0;
     color: white;
-    background-color: #0d6efd;
+    background-color: #096bff;
     font-family: 'NanumSquareR', sans-serif;
-    line-height: 1.5;
+    line-height: 1.676;
     border: 1px solid transparent;
-    border-radius: 0.25rem;
-    font-size: larger;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem solid  #0c61e1;
+    font-size:x-large;
+}
+
+button:hover {
+    background: #0962e7;
+    border-bottom: 0.5rem solid #0b57ca;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+
+p {
+    margin: 0;
+    margin-bottom: 1rem;
 }
 
 h3 {
@@ -42,7 +58,8 @@ h3 {
 #label-container {
     align-items: center;
     text-align: center;
-    padding: 5% 0;
+    padding: 0;
+    padding-bottom: 5%;
     margin: 0;
 }
 
@@ -66,59 +83,92 @@ h3 {
     position: relative!important
 }
 
-.animal-bar {
+.one-bar {
     position: absolute;
     height: 2rem;
     border-radius: 10px;
     background-color: chartreuse;
 }
 
-.animal-box {
+.one-box {
     position: absolute;
     height: 2rem;
     border-radius: 10px;
     width: 100%;
-    background-color: rgba(127, 255, 0, 0.2)
+    background-color: rgba(127, 255, 0, 0.2);
 }
 
-.crime-bar {
+.two-bar {
     position: absolute;
     height: 2rem;
     border-radius: 10px;
-    background-color: cadetblue;
+    background-color: royalblue;
 }
 
-.crime-box {
+.two-box {
     position: absolute;
-    top: 0;
-    left: 0;
     height: 2rem;
     border-radius: 10px;
     width: 100%;
-    background-color: rgba(95, 158, 160, 0.2)
+    background-color:rgba(65, 105, 225, 0.2);
 }
 
-.color-bar {
+.three-bar {
     position: absolute;
-    top: 0;
-    left: 0;
     height: 2rem;
     border-radius: 10px;
     background-color:coral;
 }
 
-.color-box {
+.three-box {
     position: absolute;
-    top: 0;
-    left: 0;
     height: 2rem;
     border-radius: 10px;
     width: 100%;
-    background-color: rgba(127, 255, 0, 0.2)
+    background-color: rgba(255, 127, 80, 0.2);
+}
+
+.four-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:darkviolet;
+}
+
+.four-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(148, 0, 211, 0.2);
+}
+
+.five-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:palevioletred;
+}
+
+.five-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(216, 112, 147, 0.2)
 }
 
 .percent {
     font-size: 1rem;
     font-weight: 700;
     display: block;
+}
+
+.result-message {
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.retry {
+    padding-top: 1rem;
 }
