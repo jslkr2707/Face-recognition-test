@@ -20,25 +20,25 @@ body {
 
 #img {
     max-width: 60%;
-    max-height: 60%;
+    max-height: 30%;
     padding: 20px;
     margin: auto;
 }
 
-button {
+#btn {
     margin: 2% auto;
     outline: 0;
     color: white;
-    background-color: #096bff;
+    background-color: cadetblue;
     font-family: 'NanumSquareR', sans-serif;
-    line-height: 1.676;
+    line-height: 1.8;
     border: 1px solid transparent;
     border-radius: 0.5rem;
-    border-bottom: 0.5rem solid  #0c61e1;
-    font-size:x-large;
+    font-size: large;
+    width: 30%;
 }
 
-button:hover {
+#btn:hover {
     background: #0962e7;
     border-bottom: 0.5rem solid #0b57ca;
     color: #ffffff;
@@ -169,6 +169,17 @@ h3 {
     font-size: 2rem;
 }
 
+.result-explain {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
 .retry {
     padding-top: 1rem;
+}
+
+.wait {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: #b5001a;
 }

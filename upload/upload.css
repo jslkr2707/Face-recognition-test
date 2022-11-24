@@ -54,9 +54,9 @@ div{
     
 .file-upload {
   background-color: #ffffff;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .file-upload-btn {
@@ -117,7 +117,7 @@ div{
 }
 
 .analysis {
-  width: 20%;
+  width: 40%;
   margin: 0;
   color: #fff;
   background: #cd4535;
@@ -145,14 +145,15 @@ div{
 }
 
 .warning {
+  background-color: transparent;
   color: red;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
     
 img.bluefile{
     position:relative;
-    left: 65%;
+    left: 73%;
     top: 25.5%;
     filter:grayscale(100)
 }

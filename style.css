@@ -6,11 +6,11 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0px;
-    background-color:beige;
+    background-color:whitesmoke;
 
     animation-name: background_color;
-    animation-duration: 5s;
-    animation-delay: 3s;
+    animation-duration: 7s;
+    animation-delay: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: linear;
@@ -18,11 +18,11 @@ body {
 
 @keyframes background_color {
     from {
-        background-color: beige;
+        background-color: whitesmoke;
     }
     
     to {
-        background-color: burlywood;
+        background-color:rgba(255, 222, 173, 0.3);
     }
 }
 
