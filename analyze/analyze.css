@@ -1,0 +1,185 @@
+html {
+    font-family: 'NanumSquareR', sans-serif;
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/NanumSquareR.ttf) format('truetype');
+}
+
+body {
+    font-family: 'NanumSquareR', sans-serif;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding: 5% 5%;
+}
+
+#img {
+    max-width: 60%;
+    max-height: 30%;
+    padding: 20px;
+    margin: auto;
+}
+
+#btn {
+    margin: 2% auto;
+    outline: 0;
+    color: white;
+    background-color: cadetblue;
+    font-family: 'NanumSquareR', sans-serif;
+    line-height: 1.8;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    font-size: large;
+    width: 30%;
+}
+
+#btn:hover {
+    background: #0962e7;
+    border-bottom: 0.5rem solid #0b57ca;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+
+p {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    margin: 3% auto;
+}
+
+#label-container {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    padding-bottom: 5%;
+    margin: 0;
+}
+
+.result-area {
+    margin: 0 5%;
+    padding: 0 5%;
+
+}
+
+.bar-container {
+    align-items: center;
+    text-align: center;
+    position: relative;
+
+}
+
+.bar-content {
+    align-items: center;
+    justify-content: center;
+    display: flex!important;
+    position: relative!important
+}
+
+.one-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: chartreuse;
+}
+
+.one-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(127, 255, 0, 0.2);
+}
+
+.two-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: royalblue;
+}
+
+.two-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color:rgba(65, 105, 225, 0.2);
+}
+
+.three-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:coral;
+}
+
+.three-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(255, 127, 80, 0.2);
+}
+
+.four-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:darkviolet;
+}
+
+.four-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(148, 0, 211, 0.2);
+}
+
+.five-bar {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    background-color:palevioletred;
+}
+
+.five-box {
+    position: absolute;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(216, 112, 147, 0.2)
+}
+
+.percent {
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+}
+
+.result-message {
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.result-explain {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.retry {
+    padding-top: 1rem;
+}
+
+.wait {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: #b5001a;
+}

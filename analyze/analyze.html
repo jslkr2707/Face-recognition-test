@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석 완료!</title>
+    <link rel="stylesheet" href="./analyze.css">
+</head>
+<body>
+    <img src = "#" id = "img" width = "60%" height = "30%">
+    <div class = "wait">
+        결과 화면 띄우는 중...<br>잠시만 기다려주세요
+    </div>
+    <div class = 'result-area'>
+        <p class = 'result-message'></p>
+        <p class = 'result-explain'></p>
+        <div style = 'margin: 0; margin-bottom: 1rem; margin-top: 1.5rem; font-size: 1.5rem; font-weight: bold;'>세부 분석 결과</div>
+        <div id = 'label-container'></div>
+    </div>
+    <div class = 'retry'>
+        <button type = 'button' onclick = 'erase()' id = 'btn'>다시 해보기</button>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const button = document.getElementById('btn');
+        button.style.visibility = 'hidden';
+
+        result();
+
+        let model, maxPredictions, labelContainer, num;
+        let image = document.getElementById('img');
+        const word = {1: 'one', 2:'two', 3:'three', 4:'four', 5:'five'}
+
+        const category = new URL(location).searchParams.get("category")
+        const url = (
+            category == 'animal' ? "https://teachablemachine.withgoogle.com/models/qOW4vPZ7e/" :
+            category == 'color' ? "https://teachablemachine.withgoogle.com/models/zLN8cgr5l/" :
+            category == 'crime' ? "https://teachablemachine.withgoogle.com/models/58xLjS4dF/" 
+            : "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        );
+
+        image.onload = async function(){
+            await init();
+            await predict();
+        }
+
+        async function init() {
+            const modelURL = url + "model.json";
+            const metadataURL = url + "metadata.json";
+
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            num = Math.min(5, maxPredictions);
+
+            labelContainer = document.getElementById('label-container');
+            console.log(labelContainer);
+            for (let i = 0; i < num + 1; i++) { 
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function predict() {
+            const prediction = await model.predict(image);
+            for (let i = 0; i < num - 1; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + Math.round(prediction[i].probability * 100) + "%";
+                labelContainer.childNodes[i+1].innerHTML = classPrediction;
+            }
+
+            prediction.sort((x, y) => parseFloat(y.probability) - parseFloat(x.probability));
+            var result, explain;
+
+            switch (prediction[0].className){
+                case "cat":
+                    result = "고양이상";
+                    explain = "언뜻 보면 무뚝뚝하고 차가워 보이지만 그 속에는 어떤 면이 있을 줄 모르는 성격.<br>사람들 사이에서 인기가 많으며, 자존심이 세지만 관심 받는 것을 은근히 좋아한다."
+                    break;
+
+                case "dog":
+                    result = "강아지상";
+                    explain = "다정다감하고 귀여워서 주변 사람들을 즐겁게 하는 사람이다.<br>성격이 활발하고 웃음기가 넘치며, 때로는 별 것 아닌데도 삐지거나 외로움을 타기도 한다."
+                    break;
+
+                case "fox":
+                    result = "여우상";
+                    explain = "매력이 넘쳐 사람을 흘리곤 한다. 인간관계에 있어서 밀당을 굉장히 잘하며,<br>사교적인 성격을 가지고 있어 친구도 많고 연인도 반하게 만드는 매력쟁이이다."
+                    break;
+
+                case "frog":
+                    result = "개구리상";
+                    explain = "개인주의적으로 보일 수 있지만 헌신적이고 긍정적인 성격을 가졌다.<br>마음 표현이 솔직하고 앞과 뒤가 다르지 않아 신뢰를 얻는 편이다. 자신이 맡은 일에는 최선을 다한다.";
+                    break;
+
+                case "giraffe":
+                    result = "기린상";
+                    explain = "성격이 느긋하고, 진중해서 소극적으로 보일 수도 있지만 누구보다 속이 깊은 사람들이다.<br>다방면의 재능을 가지고 있는 경우가 많으며, 처세술이 뛰어나다.";
+                    break;
+
+                case "monkey":
+                    result = "원숭이상";
+                    explain = "지능이 좋고 명석하며 손재주가 좋고, 팀으로 활동할 때 더욱 기량을 잘 발휘할 수 있다.<br>호기심과 경계심이 많으며 성격이 다소 급하고 예민한 편이다.";
+                    break;
+
+                case "mouse":
+                    result = "쥐상";
+                    explain = "부지런하고 예의바른 성격을 가지고 있다.<br>꾀가 많고 상황을 빠르게 읽는 능력이 탁월하여 처세술이 뛰어나다.<br>이런 것을 이용해 성공하기도 쉽지만, 자만심을 경계해야 한다.";
+                    break;
+
+                case "pig":
+                    result = "돼지상";
+                    explain = "미련해 보이지만 대체로 총명하고 두뇌회전이 빠르고, 재치와 유머감각이 있다.<br>깨끗한것을 좋아한다. 재물복이 상당히 있는 편이다.";
+                    break;
+
+                case "snake":
+                    result = "뱀상";
+                    explain = "총명하고 지략이 뛰어난 전략가 스타일이다.<br>어떤 일을 진행할 때에 용의주도한 성격을 가지고 있으며, 자신이 맡은 일에 책임감을 가지고 있다. 처세술이 뛰어나다.";
+                    break;
+
+                case "good":
+                    result = "모범시민상";
+                    explain = "평생 거짓말 한 번 안 할 것 같은 모범시민의 얼굴이다.<br>앞으로도 떳떳하게 살아가길 바란다.";
+                    break;
+
+                case "fraud":
+                    result = "사기꾼상";
+                    explain = "남을 흘리는 매력과 언변이 뛰어나 마음을 나쁘게 먹으면 사기꾼이 될 수 있다.<br>욕심을 조절해야 한다.";
+                    break;
+
+                case "drug":
+                    result = "약물 중독상";
+                    explain = "무언가에 의지하는 경향이 커 약물을 접할 경우 쉽게 중독될 수 있다.<br>스스로 자립해서 살아가는 법을 익혀야 한다.";
+                    break;
+
+                case "theft":
+                    result = "절도상";
+                    explain = "재물 욕심이 커 나쁜 마음을 먹으면 절도범이 될 수 있다.<br>돈 욕심을 버려야 하며 남의 것을 탐내지 말아야 한다.";
+                    break;
+
+                case "cool":
+                    result = "쿨 톤";
+                    explain = "계절로 따지면 가을 ~ 겨울에 해당한다. 세련되고 냉정한 도시인의 이미지이다.<br>간혹 냉철하고 잔인하게 비춰질 수 있으므로 사람들에게 따뜻하게 대하는 것이 좋다.";
+                    break;
+
+                case "warm":
+                    result = "웜 톤";
+                    explain = "계절로 따지면 봄 ~ 여름에 해당한다. 푸근하고 따뜻한 사람의 이미지이다.<br>포용력이 있고 자신과 다른 사람을 인정할 줄 안다. 다만 너무 포용만 하다보면 뒤통수를 맞을 위험이 있다.";
+                    break;
+            }
+
+            $('.result-message').html(result);
+			$('.result-explain').html(explain);
+
+			for (let i = 0; i < num; i++) {
+				var barWidth;
+				var labeltitle;
+
+				barWidth = prediction[i].probability.toFixed(2) * 100 + '%';
+				console.log(barWidth);
+				switch (prediction[i].className) {
+					case "cat":
+                        labeltitle = "<h3>고양이상</h3>";
+                        break;
+
+                    case "dog":
+                        labeltitle = "<h3>강아지상</h3>";
+                        break;
+
+                    case "fox":
+                        labeltitle = "<h3>여우상</h3>";
+                        break;
+
+                    case "frog":
+                        labeltitle = "<h3>개구리상</h3>";
+                        break;
+
+                    case "giraffe":
+                        labeltitle = "<h3>기린상</h3>";
+                        break;
+
+                    case "monkey":
+                        labeltitle = "<h3>원숭이상</h3>";
+                        break;
+
+                    case "mouse":
+                        labeltitle = "<h3>쥐상</h3>";
+                        break;
+
+                    case "pig":
+                        labeltitle = "<h3>돼지상</h3>";
+                        break;
+
+                    case "snake":
+                        labeltitle = "<h3>뱀상</h3>";
+                        break;
+
+                    case "good":
+                        labeltitle = "<h3>모범시민상</h3>";
+                        break;
+
+                    case "fraud":
+                        labeltitle = "<h3>사기꾼상</h3>";
+                        break;
+
+                    case "drug":
+                        labeltitle = "<h3>약물 중독상</h3>";
+                        break;
+
+                    case "theft":
+                        labeltitle = "<h3>절도상</h3>";
+                        break;
+
+                    case "cool":
+                        labeltitle = "<h3>쿨 톤</h3>";
+                        break;
+
+                    case "warm":
+                        labeltitle = "<h3>웜 톤</h3>";
+                        break;
+				}
+
+				var label =
+					"<div class='label-title'>" +
+					labeltitle +
+					'</div>';
+
+				var bar =
+					"<div class='bar-container'><div class='" +
+					word[i+1] +
+					"-box'></div><div class='bar-content " +
+					word[i+1] +
+					"-bar' style='width: " +
+					barWidth +
+					"'><span class='percent'>" +
+					Math.round(prediction[i].probability.toFixed(2) * 100) +
+					'%</span></div></div>';
+
+					labelContainer.childNodes[i].innerHTML = label + bar;
+				}
+
+            const wait = document.getElementsByClassName('wait')[0];
+            wait.remove();
+
+            setTimeout(function() {
+                button.style.visibility = 'visible';
+            }, 5000)
+        }
+
+        function result() {
+            var b=localStorage.getItem("b")
+            var c=document.querySelector("#img")
+            c.setAttribute("src", b)
+        }
+
+        function erase(){
+            localStorage.clear();
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>
